@@ -23,7 +23,7 @@ export default function WidgetSm() {
 			<span className="widgetSmTitle">New Join Members</span>
 			<ul className="widgetSmList">
 				{users.map((user) => (
-					<li key={user.id} className="widgetSmListItem">
+					<li key={user._id} className="widgetSmListItem">
 						<img
 							src={user.img || " https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png"}
 							alt=""

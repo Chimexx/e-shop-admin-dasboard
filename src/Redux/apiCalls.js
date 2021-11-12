@@ -6,6 +6,12 @@ import {
 	deleteProductsStart,
 	deleteProductsSuccess,
 	deleteProductsFailure,
+	updateProductsStart,
+	updateProductsSuccess,
+	updateProductsFailure,
+	createProductsStart,
+	createProductsSuccess,
+	createProductsFailure,
 } from "./productSlice";
 import { publicRequest, userRequest } from "../RequestMethods";
 
@@ -36,5 +42,23 @@ export const deleteProducts = async (id, dispatch) => {
 		dispatch(deleteProductsSuccess(res.data));
 	} catch (error) {
 		dispatch(deleteProductsFailure());
+	}
+};
+export const updateProducts = async (id, product, dispatch) => {
+	dispatch(updateProductsStart());
+	try {
+		dispatch(updateProductsSuccess({ id, product }));
+	} catch (error) {
+		dispatch(updateProductsFailure());
+	}
+};
+export const createProducts = async (product, dispatch) => {
+	dispatch(createProductsStart());
+	try {
+		const res = await userRequest.post("products/new", product);
+		console.log(res.data);
+		dispatch(createProductsSuccess(res.data));
+	} catch (error) {
+		dispatch(createProductsFailure());
 	}
 };
